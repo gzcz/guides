@@ -1,5 +1,5 @@
 import * as React from "react";
-import Ruler from "@scena/react-ruler";
+import Ruler from "@sugo/react-ruler";
 import { ref, refs } from "framework-utils";
 import Dragger, { OnDragEnd } from "@daybrush/drag";
 import styled, { StyledInterface } from "react-css-styled";

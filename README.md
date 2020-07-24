@@ -1,9 +1,9 @@
 
 
 <p align="middle" ><img src="https://raw.githubusercontent.com/daybrush/guides/master/demo/images/guides.png"/></p>
-<h2 align="middle">Guides</h2>
+<h2 align="middle">React Guides</h2>
 <p align="middle">
-<a href="https://www.npmjs.com/package/@scena/guides" target="_blank"><img src="https://img.shields.io/npm/v/@scena/guides.svg?style=flat-square&color=007acc&label=version" alt="npm version" /></a>
+<a href="https://www.npmjs.com/package/@scena/react-guides" target="_blank"><img src="https://img.shields.io/npm/v/@scena/react-guides.svg?style=flat-square&color=007acc&label=version" alt="npm version" /></a>
 <img src="https://img.shields.io/badge/language-typescript-blue.svg?style=flat-square"/>
 <a href="https://github.com/daybrush/guides/blob/master/LICENSE" target="_blank"><img src="https://img.shields.io/github/license/daybrush/guides.svg?style=flat-square&label=license&color=08CE5D"/></a>
 <a href="https://github.com/daybrush/guides/tree/master/packages/react-guides" target="_blank"><img alt="React" src="https://img.shields.io/static/v1.svg?label=&message=React&style=flat-square&color=61daeb"></a>
@@ -16,7 +16,7 @@
     alt="Vue"
     src="https://img.shields.io/static/v1.svg?label=&message=Svelte&style=flat-square&color=C82B38"></a>
 </p>
-<p align="middle">A Guides component that can draw ruler and manage guidelines.</p>
+<p align="middle">A React Guides component that can draw ruler and manage guidelines.</p>
 <p align="middle">
     <a href="https://daybrush.com/guides" target="_blank"><strong>Demo</strong></a> /
     <a href="https://daybrush.com/guides/release/latest/doc/" target="_blank"><strong>API</strong></a> /
@@ -27,40 +27,44 @@
 ## ⚙️ Installation
 ### npm
 ```sh
-$ npm i @scena/guides
-```
-
-### scripts
-```html
-<script src="//daybrush.com/guides/release/latest/dist/guides.min.js"></script>
+$ npm i @scena/react-guides
 ```
 
 ## 🚀 How to use
 ```tsx
 
-import Guides from "@scena/guides";
+import * as React from "react";
+import Guides from "@scena/react-guides";
 
-const guides = new Guides(document.body, {
-    type: "horizontal",
-}).on("changeGuides", e => {
-    console.log(e.guides);
-});
+export default class App extends React.Component {
+    render() {
+        return (<Guides
+            ref={e => {
+                this.guides = e;
+            }}
+            type="horizontal"
+            onChangeGuides={({ guides }) => {
+                console.log(guides);
+            }}
+        />);
+    }
+    componentDidMount() {
+        this.guides.resize();
+        let scrollX = 0;
+        let scrollY = 0;
 
+        window.addEventListener("wheel", e => {
+            scrollX += e.deltaX;
+            scrollY += e.deltaY;
 
-let scrollX = 0;
-let scrollY = 0;
-window.addEventListener("resize", () => {
-    guides.resize();
-});
-
-window.addEventListener("wheel", e => {
-    scrollX += e.deltaX;
-    scrollY += e.deltaY;
-
-    guides.scrollGuides(scrollY);
-    guides.scroll(scrollX);
-});
-
+            this.guides.scrollGuides(scrollY);
+            this.guides.scroll(scrollX);
+        });
+        window.addEventListener("resize", () => {
+            this.guides.resize();
+        });
+    }
+}
 
 export interface RulerProps {
     type?: "horizontal" | "vertical";
@@ -97,11 +101,16 @@ export interface GuidesInterface {
 ```
 
 
+
 ## ⚙️ Developments
-### `npm run demo:start`
+### `npm run start`
 
 Runs the app in the development mode.<br>
-Open `demo/index.html` file.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
+
 
 
 ## ⭐️ Show Your Support
@@ -109,7 +118,7 @@ Please give a ⭐️ if this project helped you!
 
 ## 👏 Contributing
 
-If you have any questions or requests or want to contribute to `guides` or other packages, please write the [issue](https://github.com/daybrush/guides/issues) or give me a Pull Request freely.
+If you have any questions or requests or want to contribute to `@scena/react-guides` or other packages, please write the [issue](https://github.com/daybrush/guides/issues) or give me a Pull Request freely.
 
 ## 🐞 Bug Report
 

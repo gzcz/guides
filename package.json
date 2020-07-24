@@ -1,70 +1,80 @@
 {
-    "name": "@scena/guides",
-    "version": "0.10.0",
-    "description": "A Vanilla Guides component that can draw ruler and manage guidelines.",
-    "main": "./dist/guides.cjs.js",
-    "module": "./dist/guides.esm.js",
-    "sideEffects": false,
-    "types": "declaration/index.d.ts",
-    "scripts": {
-        "start": "rollup -c -w",
-        "build": "rollup -c && npm run declaration && print-sizes ./dist",
-        "declaration": "rm -rf declaration && tsc -p tsconfig.declaration.json",
-        "doc": "rm -rf ./doc && jsdoc -c jsdoc.json",
-        "demo:start": "rollup -c rollup.config.demo.js -w",
-        "demo:build": "rollup -c rollup.config.demo.js",
-        "prerelease": "npm run build && npm run demo:build && prerelease --dirs=dist,doc",
-        "release": "npm run build && npm run demo:build && release --dirs=dist,doc",
-        "release:init": "npm run build && npm run demo:build && release -i --dirs=dist,doc",
-        "deploy": "gh-pages -d ./demo --dest=./ --add --remote origin",
-        "packages": "npm run packages:update && npm run packages:build && npm run packages:publish",
-        "packages:update": "pvu --update=svelte-guides,ngx-guides/projects/ngx-guides,vue-guides",
-        "packages:build": "pvu --build=svelte-guides,ngx-guides,vue-guides",
-        "packages:publish": "pvu --publish=svelte-guides,ngx-guides/dist/ngx-guides,vue-guides"
-    },
-    "keywords": [
-        "scene",
-        "scenejs",
-        "scene.js",
-        "scena",
-        "guides",
-        "scroller"
+  "name": "@sugo/react-guides",
+  "version": "0.9.1",
+  "description": "一个基于React的标尺、辅助线组件",
+  "main": "./dist/guides.cjs.js",
+  "module": "./dist/guides.esm.js",
+  "sideEffects": false,
+  "types": "declaration/index.d.ts",
+  "scripts": {
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "start": "react-scripts start",
+    "build": "rollup -c && npm run declaration && print-sizes ./dist ",
+    "declaration": "rm -rf declaration && tsc -p tsconfig.declaration.json",
+    "packages": "npm run packages:update && npm run packages:build && npm run packages:publish",
+    "packages:update": "pvu --path=../ --update=preact-guides,react-compat-guides",
+    "packages:build": "pvu --path=../ --build=preact-guides,react-compat-guides",
+    "packages:publish": "pvu --path=../ --publish=preact-guides,react-compat-guides"
+  },
+  "keywords": [
+    "scene",
+    "scenejs",
+    "scene.js",
+    "scena",
+    "guides",
+    "guidelines",
+    "scroller",
+    "ruler",
+    "react"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daybrush/guides/blob/master/packages/react-guides"
+  },
+  "author": "Daybrush",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daybrush/guides/issues"
+  },
+  "homepage": "https://daybrush.com/guides",
+  "devDependencies": {
+    "@daybrush/builder": "^0.1.0",
+    "@scenejs/effects": "^1.0.1",
+    "@types/react": "^16.8.18",
+    "@types/react-color": "^3.0.1",
+    "@types/react-dom": "^16.8.4",
+    "print-sizes": "0.0.4",
+    "pvu": "^0.3.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "^3.0.1",
+    "shape-svg": "^0.3.3",
+    "tslint": "^5.20.1",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "@daybrush/drag": "^0.19.1",
+    "@daybrush/utils": "^0.10.5",
+    "@sugo/react-ruler": "^0.5.1",
+    "framework-utils": "^0.3.4",
+    "react-css-styled": "^0.2.0"
+  },
+  "peerDependencies": {
+    "@daybrush/drag": ">=0.19.1",
+    "react-css-styled": ">=0.2.0",
+    "framework-utils": ">=0.3.4",
+    "@daybrush/utils": ">=0.10.5"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/daybrush/guides.git"
-    },
-    "author": "Daybrush",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/daybrush/guides/issues"
-    },
-    "homepage": "https://daybrush.com/guides",
-    "devDependencies": {
-        "@daybrush/builder": "^0.1.2",
-        "@daybrush/demo": "0.0.2",
-        "@daybrush/drag": "^0.11.0",
-        "@daybrush/jsdoc": "^0.3.7",
-        "@daybrush/release": "^0.2.4",
-        "@types/karma-chai": "^0.1.2",
-        "@types/mocha": "^5.2.7",
-        "@types/react": "^16.9.17",
-        "@types/react-dom": "^16.9.4",
-        "daybrush-jsdoc-template": "^1.6.0",
-        "gh-pages": "^2.0.1",
-        "keycon": "^0.5.0",
-        "print-sizes": "0.0.4",
-        "pvu": "^0.3.1",
-        "react": "^16.12.0",
-        "react-dom": "^16.12.0",
-        "rollup-plugin-css-bundle": "^1.0.4",
-        "rollup-plugin-react-compat": "^0.1.0",
-        "scenejs": "^1.1.4",
-        "tslint": "^5.18.0",
-        "typescript": "^3.5.2"
-    },
-    "dependencies": {
-        "@egjs/component": "^2.1.2",
-        "react-compat-guides": "^0.7.0"
-    }
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

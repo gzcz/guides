@@ -1,4 +1,4 @@
-import { RulerProps } from "@scena/react-ruler/declaration/types";
+import { RulerProps } from "@sugo/react-ruler/declaration/types";
 import { IObject } from "@daybrush/utils";
 import {
     OnDragStart as OnDraggerDragStart,
