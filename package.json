@@ -29,14 +29,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/daybrush/guides/blob/master/packages/react-guides"
+    "url": "https://github.com/gzcz/guides"
   },
-  "author": "Daybrush",
+  "author": "chendahai",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/daybrush/guides/issues"
+    "url": "https://github.com/gzcz/guides/issues"
   },
-  "homepage": "https://daybrush.com/guides",
+  "homepage": "https://github.com/gzcz/guides",
   "devDependencies": {
     "@daybrush/builder": "^0.1.0",
     "@scenejs/effects": "^1.0.1",
