@@ -124,6 +124,13 @@ export default class Guides extends React.PureComponent<GuidesProps, GuidesState
     public componentWillUnmount() {
         this.dragger.unset();
     }
+
+    public removeGuides(guids: number) {
+        this.setState({
+            guides: []
+        })
+    }
+
     /**
      * Load the current guidelines.
      * @memberof Guides
